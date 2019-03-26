@@ -1,0 +1,23 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* .example-container > * {
+    width: 100%;
+  } */
+  .example-container{
+    height: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .center{
+    width: 175%;
+    margin: 100px auto;
+  }
+
+  .custom{
+      height: 350px;
+      width: 350px
+  }
