@@ -1,0 +1,33 @@
+.first{
+    height: 10px;
+    width: 100%;
+    background: #ddd
+}
+
+.second{
+    height: 10px;
+    width: 100;
+    background: #009200 
+}
+
+.custom{
+    height: 200px;
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* .example-container > * {
+    width: 100%;
+  } */
+  .example-container{
+    height: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
