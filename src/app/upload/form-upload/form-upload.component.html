@@ -1,0 +1,23 @@
+
+<div class="example-container">
+    <mat-card class="custom">
+  <div *ngIf="currentFileUpload" class="first">
+  <div class="second" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+    {{progress.percentage}}%</div>
+  </div>
+
+<br><br>
+
+<button mat-raised-button>
+  <input type="file" (change)="selectFile($event)">
+</button><br><br>
+<button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+</mat-card>
+</div>
+
+
+
+
+
+
