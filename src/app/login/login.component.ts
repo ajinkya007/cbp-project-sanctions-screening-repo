@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
     .then(users=>this.users = users);
   }
 
-  getStatus(){
-    if(this.emailLogin.value!=null && this.passwordLogin.value!=null)
-  }
+  // getStatus(){
+  //   if(this.emailLogin.value!=null && this.passwordLogin.value!=null){}
+  // }
   checkUser(){
 
     if(this.emailLogin.value == null && this.passwordLogin.value == null)

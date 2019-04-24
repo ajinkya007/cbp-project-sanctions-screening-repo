@@ -23,9 +23,13 @@ export class FormUploadComponent implements OnInit {
   }
 
   upload() {
+    
     this.progress.percentage = 0;
 
     this.currentFileUpload = this.selectedFiles.item(0);
+
+    console.log(this.currentFileUpload.name);
+
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);

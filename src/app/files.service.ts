@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Users } from './users';
 import { Headers, Http } from '@angular/http';
+import { Files } from './files';
 //import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class UserService {
+export class FilesUploadedService {
   private baseUrl = 'http://localhost:8080';
 
   constructor(private http: Http) { }
 
-  getUsers():  Promise<Users[]> {
-    return this.http.get(this.baseUrl + '/Users/')
+  getFiles():  Promise<Files[]> {
+    return this.http.get(this.baseUrl + '/uploadFiles')
       .toPromise()
-      .then(response => response.json() as Users[])
+      .then(response => response.json() as Files[])
       .catch(this.handleError);
   }
 
-  createUser(UsersData: Users): Promise<Users> {
-    return this.http.post(this.baseUrl + '/Users/', UsersData)
-      .toPromise().then(response => response.json() as Users)
-      .catch(this.handleError);
-  }
-
+  
   private handleError(error: any): Promise<any> {
     console.error('Some error occured', error);
     return Promise.reject(error.message || error);

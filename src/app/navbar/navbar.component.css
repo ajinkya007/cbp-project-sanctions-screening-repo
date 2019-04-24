@@ -1,0 +1,63 @@
+/* .example-icon { */
+    /* padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-events {
+    width: 300px;
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #555;
+  } */
+  #table-wrapper {
+    position:relative;
+  }
+  #table-scroll {
+    height:150px;
+    overflow:auto;  
+    margin-top:20px;
+  }
+  #table-wrapper table {
+    width:100%;
+  
+  }
+  #table-wrapper table * {
+    background:yellow;
+    color:black;
+  }
+  #table-wrapper table thead th .text {
+    position:absolute;   
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:1px solid red;
+  }
+  
+  table {
+    width: 100%;
+  }
+
+  .centered {
+    position:absolute;
+    top: 20%;
+    left: 50%;
+    font-size: 50px;
+    color:black;
+    transform: translate(-50%, -50%);
+  }
+
+  img{
+    opacity: 0.7;
+  }

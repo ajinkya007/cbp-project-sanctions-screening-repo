@@ -5,7 +5,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule,MatRippleModule
   ,MatInputModule, MatTabsModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule,MatIconModule } from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +28,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
-
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import {RecordService} from './records.service';
+import {FilesUploadedService} from '../app/files.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +41,7 @@ import { DetailsUploadComponent } from './upload/details-upload/details-upload.c
     DetailsUploadComponent,
     FormUploadComponent,
     ListUploadComponent,
+    UploadFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +55,13 @@ import { DetailsUploadComponent } from './upload/details-upload/details-upload.c
     MatCardModule, MatTabsModule,
     HttpModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,MatDialogModule,MatSelectModule,
+    MatSidenavModule,MatMenuModule,MatTableModule,MatProgressSpinnerModule,MatStepperModule,
+    MatTooltipModule
   ],
-  providers: [UserService,UploadFileService],
+  providers: [UserService,UploadFileService,RecordService,FilesUploadedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

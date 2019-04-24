@@ -1,4 +1,150 @@
 
-<div style="text-align:center">
-    <button mat-raised-button color="primary"  [routerLink]="['fileupload']"> Upload a file </button>
+<div style="text-align:center" class="example-container">
+
+    <!-- <button mat-raised-button color="primary"  [routerLink]="['/fileupload']"> Upload a file </button> -->
+    <mat-card class="custom">
+            <mat-tab-group color="accent" backgroundColor="primary">
+                    <mat-tab label="Home"> 
+                           
+                            <app-navbar></app-navbar>
+
+                            <mat-horizontal-stepper #stepper>
+                                <mat-step [stepControl]="firstFormGroup">
+                                        <ng-template matStepLabel [matStepperIcon]><b><font size="4">Upload</font></b></ng-template>
+                                       
+                                    <div>
+                                        <form (ngSubmit)="upload()" [formGroup]="form">
+                                                <input ng-model="file_upload" name="file" type="file" (change)="fileChange($event)" #fileInput>
+                                                                <button mat-raised-button color="primary" type="submit" matTooltip="File Uploading and Validating">UPLOAD And VALIDATE</button>
+                                                                
+                                                                <br>
+                                                                        
+                                                            </form>
+                                    </div>
+                                    <br><br>
+                                    <button mat-stroked-button color="primary" matStepperNext>Next</button>
+                                  
+                                </mat-step>
+
+                                <mat-step [stepControl]="secondFormGroup">
+                                        <ng-template matStepLabel><b><font size="4">Results</font></b></ng-template>
+                                        <div>
+                                                                      <button mat-stroked-button color="primary" (click)="getUploadedFiles()">Uploaded Files</button>
+                                                                      <button mat-stroked-button color="primary" (click)="getValidRecords()">Valid Pass Records</button>
+                                                                      <button mat-stroked-button color="primary" (click)="getRecords()">Valid Fail Records</button>
+                                                                      <button mat-stroked-button color="primary" (click)="getScreenedRecords()">Screen Pass Records</button>
+                                                                      <button mat-stroked-button color="primary">Screen Fail Records</button>
+                                                                      
+                                                                      <!-- {{getSelectedOption()}} -->
+                                                        
+                                                        <br><br>
+
+                                                        <button mat-raised-button color="primary" (click)="screenRecords()" >SCRENNING</button><br><br>
+
+                                                        
+                                                        <div id="table-wrapper">
+                                                                        <div id="table-scroll">
+                                                                 <table style="width:100%" *ngFor="let file of files; let i = index">
+                                                                
+                                                        
+                                                                                <tr *ngIf="i==='0'">
+                                                                                        <!-- <tr> -->
+                                                                                                <th>Filename</th>
+                                                                                                <th >UploadedDate</th>
+                                                                                        </tr>
+
+                                                                        <tr>
+                                                                          <td item-width="50%">{{files[i]?.fileName}}</td>
+                                                                          <td item-width="50%">{{ files[i]?.dateOfUploading}}</td> 
+                                                                        </tr>
+                                                                    </table>
+                            
+                                                        
+                                                                        </div>
+                                                        </div>
+
+                                                        <div id="table-wrapper">
+                                                                        <div id="table-scroll">
+                                                                 <table style="width:100%" *ngFor="let record of records; let i = index">
+                                                                
+                                                        
+                                                                                <tr *ngIf="i==='0'">
+                                                                                        <!-- <tr> -->
+                                                                                                <th>TransactionReference</th>
+                                                                                                <th >ValueDate</th>
+                                                                                                <th >PayerName</th>
+                                                                                                <th >PayerAccount</th>
+                                                                                                <th >PayeeName</th>
+                                                                                                <th >PayeeAccount</th>
+                                                                                                <th >Amount</th>
+                                                                                        </tr>
+
+                                                                        <tr>
+                                                                          <td item-width="50%">{{ records[i]?.transactionRef}}</td>
+                                                                          <td item-width="50%">{{ records[i]?.valueDate}}</td> 
+                                                                          <td item-width="50%">{{ records[i]?.payerName}}</td> 
+                                                                          <td item-width="50%">{{ records[i]?.payerAccount}}</td>
+                                                                          <td item-width="50%">{{ records[i]?.payeeName}}</td> 
+                                                                          <td item-width="50%">{{ records[i]?.payeeAccount}}</td> 
+                                                                          <td item-width="50%">{{ records[i]?.amount}}</td> 
+                                                                        </tr>
+                                                                    </table>
+                            
+                                                        
+                                                                        </div>
+                                                        </div>
+
+
+
+                                          <button mat-stroked-button color="primary" matStepperNext>Next</button>
+                                        </div>
+                                      
+                                </mat-step>
+
+                                <mat-step>
+                                                <br><br><ng-template matStepLabel ><b><font size="4">Logout</font></b></ng-template>
+                                                <div >
+                                                  <button mat-stroked-button color="primary" matStepperNext [routerLink]="['/login']">Logout</button>
+                                                </div><br>
+                                                <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
+                                              
+                                        </mat-step>
+                                        
+                        </mat-horizontal-stepper>
+
+
+                        
+                        
+                          </mat-tab>
+
+
+                    <mat-tab label="About"> 
+                        <app-navbar></app-navbar>
+                        <button mat-stroked-button color="primary" [routerLink]="['/login']">Logout</button>
+
+                        <font size="4">
+                        <p align="left">
+                                Transaction volume is increasing rapidly. In order to protect against damage, risks, and fines financial institutions need efficient and sophisticated technology solutions that help them keep pace, all while containing spiraling costs.
+                                this system is build for examination of transactions and identification of suspicious transactions.
+                                </p>
+                                <p align="left">
+                                This system is well designed to check if the Payment
+                                Transaction will be completed successfully without any
+                                malfunctions, if not the person will not be allowed screening.</p>
+                                <p align="left">
+                                Screening will be done when this file is uploaded by checking if
+                                the person should be allowed by mapping it to the information
+                                stored in the database.
+                                </p ><p align="left">
+                                This system will help by applying a Risk-Based approach where
+                                whether the person would be responsible in understanding the
+                                nuances of often arcane sanctions requirements and how these
+                                might influence screening outcomes and decisions, as well as
+                                the technical capabilities of screening software.</p>
+                        </font>
+                     </mat-tab>                    
+                        
+                  </mat-tab-group>
+
+        </mat-card>
 </div>
